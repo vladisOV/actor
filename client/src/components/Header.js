@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 class Header extends Component {
   render() {
+    console.log(this.props.auth);
     return (
-      <nav className="light-blue darken-1">
+      <nav>
         <div className="left brand-logo" style={{ marginLeft: "10px" }}>
           Акты
         </div>
@@ -12,4 +14,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Header);
