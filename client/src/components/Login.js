@@ -16,10 +16,15 @@ class Login extends Component {
     );
   }
 
+  onSubmit = values => {
+    console.log(values);
+    // this.props.login(values);
+  };
+
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form>
-        <Field label="Вход" name="title" component={this.renderField} />
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <Field
           label="Имя пользователя"
           name="username"
@@ -34,6 +39,20 @@ class Login extends Component {
   }
 }
 
-export default reduxForm({ form: "LoginForm" })(
+function validate(values) {
+  const errors = {};
+
+  if (!values.username) {
+    errors.username = "Введите имя пользователя!";
+  }
+
+  if (!values.password) {
+    errors.password = "Введите пароль!";
+  }
+
+  return errors;
+}
+
+export default reduxForm({ validate, form: "LoginForm" })(
   connect(null, { login })(Login)
 );
