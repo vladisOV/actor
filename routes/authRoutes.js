@@ -5,7 +5,7 @@ module.exports = app => {
   app.post("/auth/register", (req, res, next) => {
     console.log("registering user", req.body);
     User.register(
-      new User({ username: req.body.username }),
+      new User({ username: req.body.username, email: req.body.email }),
       req.body.password,
       err => {
         if (err) {
