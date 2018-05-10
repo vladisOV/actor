@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import Header from "./Header";
 import Login from "./Login";
+import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import "../css/App.css";
 
@@ -18,6 +19,7 @@ class App extends Component {
         <BrowserRouter>
           <div className="container">
             <Header />
+            <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/dashboard" component={Dashboard} />
           </div>

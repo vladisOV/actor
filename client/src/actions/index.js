@@ -2,7 +2,7 @@ import axios from "axios";
 import { LOGIN } from "./types";
 
 export const login = userinfo => async dispatch => {
-  const res = await axios.post("/api/login", userinfo);
+  const res = await axios.post("/auth/login", userinfo);
   dispatch({
     type: LOGIN,
     payload: res.data

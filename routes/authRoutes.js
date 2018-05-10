@@ -2,7 +2,7 @@ const passport = require("passport");
 const User = require("../models/User");
 
 module.exports = app => {
-  app.post("/api/register", (req, res, next) => {
+  app.post("/auth/register", (req, res, next) => {
     console.log("registering user", req.body);
     User.register(
       new User({ username: req.body.username }),
@@ -18,17 +18,13 @@ module.exports = app => {
     );
   });
 
-  app.post("/api/login", passport.authenticate("local"), (req, res) => {
+  app.post("/auth/login", passport.authenticate("local"), (req, res) => {
     res.send(req.user);
     // res.redirect("/dashboard");
   });
 
-  app.get("/api/logout", (req, res) => {
+  app.get("/auth/logout", (req, res) => {
     req.logout();
     res.redirect("/");
-  });
-
-  app.get("/api/current_user", (req, res) => {
-    res.send(req.user);
   });
 };

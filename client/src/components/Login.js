@@ -5,8 +5,10 @@ import { login } from "../actions";
 import "../css/Login.css";
 
 class Login extends Component {
-  componentWillReceiveProps() {
-    console.log(this.props.auth);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth) {
+      this.props.history.push("/dashboard");
+    }
   }
 
   renderField(field) {
@@ -26,9 +28,6 @@ class Login extends Component {
   };
 
   render() {
-    if (this.props.auth) {
-      this.props.history.push("/dashboard");
-    }
     const { handleSubmit } = this.props;
     return (
       <div className="row login-form">
