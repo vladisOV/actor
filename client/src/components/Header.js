@@ -9,15 +9,18 @@ class Header extends Component {
       case null:
         return;
       case false:
-        return (
-          <li>
-            <a href="/login">Войти</a>
+        return [
+          <li key="1">
+            <Link to="/register">Зарегаться</Link>
+          </li>,
+          <li key="2">
+            <Link to="/login">Войти</Link>
           </li>
-        );
+        ];
       default:
         return [
           <li key="1">
-            <a href="/profile">Профиль</a>
+            <Link to="/profile">Профиль</Link>
           </li>,
           <li key="2">
             <a href="/auth/logout">Выйти</a>
